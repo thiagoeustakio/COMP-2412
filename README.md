@@ -12,3 +12,5 @@ All these extensions are authored by Microsoft.
 3. Clone this repo and rebuild and reopen in container.
 
 This will create a linux environment in your machine where you will be able to use CMake, GCC and G++.
+
+You can find more information about devcontainers here: https://code.visualstudio.com/docs/devcontainers/tutorial
