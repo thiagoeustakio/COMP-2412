@@ -5,6 +5,7 @@ struct Node{
     int data;
     struct Node* left;
     struct Node* right;
+    int height;
 };
 
 struct Node* createNode(int d){
@@ -12,7 +13,45 @@ struct Node* createNode(int d){
     temp->data=d;
     temp->left=NULL;
     temp->right=NULL;
+    temp->height = 0;
+
     return temp;
+}
+
+int height(struct Node* node){
+    if(node==NULL){
+        return -1;
+    }
+    return node->height;
+}
+
+int max(int va, int vb){
+    return (va>vb) ? va : vb;
+}
+
+void updateheight(struct Node* node){
+    if(node == NULL){
+        return;
+    }
+    node->height = max(height(node->left), height(node->right)) + 1; 
+}
+
+int balancefactor(struct Node* node){
+    if(node == NULL){
+        return 0;
+    }
+    return height(node->left) - height(node->right);
+}
+
+struct Node* rotateleft(struct Node* node){
+    if (node == NULL || node->right == NULL){
+        return node;
+    }
+    struct Node* nroot = node->right;
+    node->right = nroot->left;
+    nroot->left = node;
+
+    return nroot;
 }
 
 struct Node* insertNode(struct Node* root, int data){
@@ -22,14 +61,23 @@ struct Node* insertNode(struct Node* root, int data){
     }
     if ( data > root->data){
         root->right = insertNode(root->right, data);
-        return root;
+        // return root; // return rotateleft(root);
     }
     if (data < root->data){
         root->left = insertNode(root->left, data);
-        return root;
+        // return root;
     }
     if ( data == root->data){
         return root;
+    }
+
+    updateheight(root);
+    int bf = balancefactor(root); // will go from 2 to -2
+
+    if(bf < -1){
+        //rotate left
+        printf("RotatinLeft on %d", root->data);
+        return rotateleft(root);
     }
 }
 
@@ -53,18 +101,7 @@ void postOrderTraversal(struct Node* root){
 
 int main(){
     struct Node* root = NULL;
-    root = insertNode(root, 10);
-    insertNode(root, 11);
-    insertNode(root, 9);
-    insertNode(root, 12);
-    insertNode(root, 7);
-    insertNode(root, 2);
-    insertNode(root, 1);
-
-    // printf("The data in the root is %d\n", root->data);
-    // printf("The data in the root->right is %d\n", root->right->data);
-    // printf("The data in the root->right->right is %d\n", root->right->right->data);
-    // printf("The data in the root->left is %d\n", root->left->data);
+    root = insertNode(root, 1);
 
     printf("InOrder Traversal: ");
     inOrderTraversal(root);

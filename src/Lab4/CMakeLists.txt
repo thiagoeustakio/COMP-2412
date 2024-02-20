@@ -6,6 +6,10 @@ add_executable(TreeExample
     TreeExample.c
 )
 
+add_executable(AVLTreeExample
+    AVLTreeExample.c
+)
+
 # add_executable(StackExample2
 #     StackExample2.cpp
 # )
