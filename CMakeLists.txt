@@ -9,7 +9,8 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 # add_subdirectory(src/CreditCard)
 # add_subdirectory(src/Lab0)
 # add_subdirectory(src/Lab2)
-add_subdirectory(src/Lab3)
+# add_subdirectory(src/Lab3)
+add_subdirectory(src/Lab4)
 # Add more subdirectories as needed
 
 # Add the executable (assuming it's named 'my_executable')

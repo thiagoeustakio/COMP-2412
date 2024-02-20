@@ -1,14 +1,14 @@
 # src/CreditCard/CMakeLists.txt
 
-SET(CMAKE_SUB_APP_NAME "Lab3")
+SET(CMAKE_SUB_APP_NAME "Lab4")
 
-add_executable(BadStackExample
-    StackExample.cpp
+add_executable(TreeExample
+    TreeExample.c
 )
 
-add_executable(StackExample2
-    StackExample2.cpp
-)
+# add_executable(StackExample2
+#     StackExample2.cpp
+# )
 
 # add_executable(CPPListExample
 #     CPPListExample.cpp
