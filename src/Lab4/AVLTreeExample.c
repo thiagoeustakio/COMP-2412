@@ -47,9 +47,10 @@ struct Node* rotateleft(struct Node* node){
     if (node == NULL || node->right == NULL){
         return node;
     }
+
     struct Node* nroot = node->right;
     node->right = nroot->left;
-    nroot->left = node;
+    nroot->left = node; //should we move this one statement up -> interestings??
 
     return nroot;
 }
@@ -73,12 +74,14 @@ struct Node* insertNode(struct Node* root, int data){
 
     updateheight(root);
     int bf = balancefactor(root); // will go from 2 to -2
+    // printf("BF of %d, -> %d\n", root->data, bf);
 
     if(bf < -1){
         //rotate left
-        printf("RotatinLeft on %d", root->data);
+        printf("Inserting %d RotatinLeft on %d\n",data, root->data);
         return rotateleft(root);
     }
+    return root;
 }
 
 void inOrderTraversal(struct Node* root){
@@ -86,6 +89,7 @@ void inOrderTraversal(struct Node* root){
         return;
     }
     inOrderTraversal(root->left);
+    // printf(" (data %d, height %d)", root->data, root->height);
     printf(" %d", root->data);
     inOrderTraversal(root->right);
 }
@@ -102,7 +106,12 @@ void postOrderTraversal(struct Node* root){
 int main(){
     struct Node* root = NULL;
     root = insertNode(root, 1);
-
+    root = insertNode(root, 2);
+    root = insertNode(root, 3);
+    root = insertNode(root, 4);
+    root = insertNode(root, 5);
+    root = insertNode(root, 7);
+ 
     printf("InOrder Traversal: ");
     inOrderTraversal(root);
     printf("\n");
