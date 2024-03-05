@@ -50,7 +50,25 @@ struct Node* rotateleft(struct Node* node){
 
     struct Node* nroot = node->right;
     node->right = nroot->left;
-    nroot->left = node; //should we move this one statement up -> interestings??
+    nroot->left = node;
+
+    updateheight(node);
+    updateheight(nroot); 
+
+    return nroot;
+}
+
+struct Node* rotateright(struct Node* node){
+    if (node == NULL || node->left == NULL){
+        return node;
+    }
+
+    struct Node* nroot = node->left;
+    node->left = nroot->right;
+    nroot->right = node;
+
+    updateheight(node);
+    updateheight(nroot); 
 
     return nroot;
 }
@@ -77,6 +95,11 @@ struct Node* insertNode(struct Node* root, int data){
     // printf("BF of %d, -> %d\n", root->data, bf);
 
     if(bf < -1){
+        if(data < root->right->data){
+            printf("inserting on on the left of the right child\n");
+            root->right = rotateright(root->right);
+        }
+
         //rotate left
         printf("Inserting %d RotatinLeft on %d\n",data, root->data);
         return rotateleft(root);
@@ -106,11 +129,11 @@ void postOrderTraversal(struct Node* root){
 int main(){
     struct Node* root = NULL;
     root = insertNode(root, 1);
-    root = insertNode(root, 2);
     root = insertNode(root, 3);
-    root = insertNode(root, 4);
-    root = insertNode(root, 5);
-    root = insertNode(root, 7);
+    root = insertNode(root, 2);
+    // root = insertNode(root, 4);
+    // root = insertNode(root, 5);
+    // root = insertNode(root, 7);
  
     printf("InOrder Traversal: ");
     inOrderTraversal(root);
