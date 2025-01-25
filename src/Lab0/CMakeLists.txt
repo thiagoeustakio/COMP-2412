@@ -2,13 +2,13 @@
 
 SET(CMAKE_SUB_APP_NAME "Lab0")
 
-add_executable(CListExample
-    CListExample.c
-)
+# add_executable(CListExample
+#     CListExample.c
+# )
 
-add_executable(CPPListExample
-    CPPListExample.cpp
-)
+# add_executable(CPPListExample
+#     CPPListExample.cpp
+# )
 
 # Add source files in the subdirectory
 # add_library(CreditCardLib CreditCard.cpp TestCreditCard.cpp)
