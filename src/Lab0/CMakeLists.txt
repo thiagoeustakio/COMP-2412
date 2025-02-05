@@ -2,13 +2,9 @@
 
 SET(CMAKE_SUB_APP_NAME "Lab0")
 
-# add_executable(CListExample
-#     CListExample.c
-# )
+# add_executable(my_fibo_executable fibonacci.c)
 
-# add_executable(CPPListExample
-#     CPPListExample.cpp
-# )
+add_executable(my_listADT_example ListADTExample.cpp ListADT.cpp)
 
 # Add source files in the subdirectory
 # add_library(CreditCardLib CreditCard.cpp TestCreditCard.cpp)
