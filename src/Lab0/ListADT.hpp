@@ -1,24 +1,19 @@
-#include <iostream>
 
-using namespace std;
-
-class Node
-{
+class Node{
 public:
     int data;
-    Node *next;
+    Node* next;
 };
 
-class ListADT
-{
-private:
-    Node *head; // we will always keep this pointer
-public:
-    ListADT() : head{nullptr} {};
-    // ~ListADT();
-    void insert_front(int num);
-    void traverselist();
-    void insert_end(int num);
-    void insert_ordered(int num);
-    void rec_reverse();
+class ListADT{
+    private:
+        Node* head;
+        Node* rec_reverseaux(Node* n);
+    public:
+        ListADT() : head(nullptr) {};
+        void insert_front(int num);
+        void traversal();
+        void rec_reverse();
+        void insert_inOrder(int num);
 };
+

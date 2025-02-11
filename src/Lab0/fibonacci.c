@@ -1,15 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int fib(int n){
-    if(1>=n) return 1;
-    return fib(n-1)+fib(n-2); 
+int fibo(int n){
+    if (n<=1) return 1;
+    return fibo(n-1)+fibo(n-2);
 }
 
 int main(int argc, char** argv){
-    printf("Nth Fibonnaci number: \n");
-
-    int fib_number = fib(atoi(argv[1]));
-    
-    printf("%d\n", fib_number);
+    for (int i=1; i<argc; i++){
+        printf("%dth Fibonacci number is %d\n", atoi(argv[i]), fibo(atoi(argv[i])));
+    }
 }
